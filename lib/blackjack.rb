@@ -28,10 +28,9 @@ end
 def initial_round
   deal_card
   deal_card
-
   card_total = (deal_card + deal_card)
   display_card_total(card_total)
-    return card_total
+  return card_total
 end
 
 def hit?(card_total)
@@ -55,14 +54,12 @@ def invalid_command
   puts "Please enter a valid command"
 end
 
-def runner(card_total)
+def runner
   welcome
-  initial_round
-  loop do
-    hit?(card_total)
-    display_card_total(card_total)
-    until hit?(card_total) > 21
-   end
-   end_game
+  card_total = initial_round
+  until card_total > 21
+    card_total = hit?(card_total)
   end
+  display_card_total(card_total)
+  end_game(card_total)
 end
